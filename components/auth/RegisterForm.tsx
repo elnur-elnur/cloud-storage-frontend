@@ -1,18 +1,18 @@
 import React from "react";
-import { Button, Form, Input, notification } from "antd";
 import styles from "./Auth.module.scss";
-import { LoginFormDTO } from "@/api/dto/auth.dto";
+import { RegisterFormDTO } from "@/api/dto/auth.dto";
+import { Button, Form, Input, notification } from "antd";
 
 import * as Api from "@/api";
 import { setCookie } from "nookies";
 
-const LoginForm: React.FC = () => {
-  const onSubmit = async (values: LoginFormDTO) => {
+const RegisterForm: React.FC = () => {
+  const onSubmit = async (values: RegisterFormDTO) => {
     try {
-      const { token } = await Api.auth.login(values);
+      const { token } = await Api.auth.register(values);
 
       notification.success({
-        message: "Ugurla daxil oldunuz",
+        message: "Ugurla qeydoyyatdan kecdiniz",
         description: "Admin panele kecid",
         duration: 2,
       });
@@ -44,6 +44,14 @@ const LoginForm: React.FC = () => {
       </Form.Item>
 
       <Form.Item
+        label="Full name"
+        name="fullName"
+        rules={[{ required: true, message: "full name" }]}
+      >
+        <Input />
+      </Form.Item>
+
+      <Form.Item
         label="Parol"
         name="password"
         rules={[{ required: true, message: "Parolu daxil edin!" }]}
@@ -53,11 +61,11 @@ const LoginForm: React.FC = () => {
 
       <Form.Item wrapperCol={{ offset: 8, span: 16 }}>
         <Button type="primary" htmlType="submit">
-          Daxil ol
+          Register ol
         </Button>
       </Form.Item>
     </Form>
   );
 };
 
-export default LoginForm;
+export default RegisterForm;
