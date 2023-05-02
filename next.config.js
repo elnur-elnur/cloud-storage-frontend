@@ -1,12 +1,7 @@
 /** @type {import('next').NextConfig} */
 
-const isProd = process.env.NODE_ENV === "production";
-
 const nextConfig = {
   reactStrictMode: true,
 };
 
-module.exports = {
-  nextConfig,
-  assetPrefix: isProd ? "https://elcloud.vercel.app/" : undefined,
-};
+module.exports = nextConfig;
