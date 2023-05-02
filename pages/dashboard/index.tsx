@@ -9,7 +9,7 @@ import { FileItem } from "@/api/dto/files.dto";
 import FileList from "@/components/fileList";
 
 interface Props {
-  items: FileItem;
+  items: FileItem[];
 }
 
 const DashboardPage: NextPage<Props> = ({ items }) => {
@@ -20,6 +20,7 @@ const DashboardPage: NextPage<Props> = ({ items }) => {
   );
 };
 
+//@ts-ignore
 DashboardPage.getLayout = (page: React.ReactNode) => {
   return <LayoutComponent title="dashboard">{page}</LayoutComponent>;
 };
@@ -40,7 +41,7 @@ export const getServerSideProps = async (ctx: GetServerSidePropsContext) => {
       },
     };
   } catch (error) {
-    console.log(err);
+    console.log(error);
     return {
       props: {
         items: [],
