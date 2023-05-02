@@ -13,13 +13,15 @@ interface FileCardProps {
 const FileCard: FC<FileCardProps> = ({ originalName, filename }) => {
   const ext = getExtensionFromFileName(filename);
 
-  const imageUrl = ext ? "http://localhost:7777/Uploads/" + filename : "";
+  const imageUrl = ext
+    ? `${process.env.NEXT_PUBLIC_API_URL}/Uploads/` + filename
+    : "";
 
   return (
     <div className={styles.root}>
       <div className={styles.icon}>
         <i>{ext}</i>
-        {["jpg", "jpeg", "png", "gif"].includes(ext) ? (
+        {ext && ["jpg", "jpeg", "png", "gif"].includes(ext) ? (
           <img className={styles.image} src={imageUrl} alt="File" />
         ) : (
           <FileTextOutlined />
