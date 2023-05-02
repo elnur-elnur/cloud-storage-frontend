@@ -2,7 +2,7 @@
   box-sizing: border-box;
   padding: 0;
   margin: 0;
-  font-family: "Segoe UI";
+  font-family: "comforta";
 }
 
 html,
@@ -35,4 +35,22 @@ a {
 
 .empty-block {
   margin: 200px;
+}
+
+@font-face {
+  font-family: "comforta";
+  src: local("../public/Comfortaa-Regular.otf"),
+    url("../public/font/Comfortaa-Regular.otf") format("opentype");
+}
+
+@font-face {
+  font-family: "comfortaL";
+  src: local("../public/Comfortaa-Light.otf"),
+    url("../public/font/Comfortaa-Light.otf") format("opentype");
+}
+
+@font-face {
+  font-family: "comfortaB";
+  src: local("../public/Comfortaa-Bold.otf"),
+    url("../public/font/Comfortaa-Bold.otf") format("opentype");
 }
