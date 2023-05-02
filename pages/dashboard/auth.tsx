@@ -15,7 +15,7 @@ const AuthPage: NextPage = () => {
         <title>Dashboard / Auth</title>
       </Head>
       <main className={styles.mainBg}>
-        <h1 className={styles.mainTitle}>Save your Files Free</h1>
+        <h1 className={styles.mainTitle}>Save Your Files Free</h1>
         <div className={styles.tabsBlock}>
           <Tabs
             items={[

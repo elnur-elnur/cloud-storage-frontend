@@ -12,7 +12,7 @@ const RegisterForm: React.FC = () => {
       const { token } = await Api.auth.register(values);
 
       notification.success({
-        message: "Ugurla qeydoyyatdan kecdiniz",
+        message: "Ugurla qeydiyyatdan kecdiniz",
         description: "Admin panele kecid",
         duration: 2,
       });
@@ -38,15 +38,18 @@ const RegisterForm: React.FC = () => {
       <Form.Item
         label="E-mail"
         name="email"
-        rules={[{ required: true, message: "E-mail adressinizi daxil edin!" }]}
+        rules={[
+          { required: true, message: "Mail adressinizi daxil edin!" },
+          { type: "email" },
+        ]}
       >
         <Input />
       </Form.Item>
 
       <Form.Item
-        label="Full name"
+        label="Ad / Soyad"
         name="fullName"
-        rules={[{ required: true, message: "full name" }]}
+        rules={[{ required: true, message: "Ad/Soyad", min: 5 }]}
       >
         <Input />
       </Form.Item>
@@ -54,14 +57,14 @@ const RegisterForm: React.FC = () => {
       <Form.Item
         label="Parol"
         name="password"
-        rules={[{ required: true, message: "Parolu daxil edin!" }]}
+        rules={[{ required: true, message: "Parolu daxil edin!", min: 7 }]}
       >
         <Input.Password />
       </Form.Item>
 
       <Form.Item wrapperCol={{ offset: 8, span: 16 }}>
         <Button type="primary" htmlType="submit">
-          Register ol
+          Qeydiyyat ol
         </Button>
       </Form.Item>
     </Form>
