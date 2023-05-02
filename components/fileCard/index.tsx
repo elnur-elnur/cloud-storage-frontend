@@ -21,7 +21,7 @@ const FileCard: FC<FileCardProps> = ({ originalName, filename }) => {
     <div className={styles.root}>
       <div className={styles.icon}>
         <i>{ext}</i>
-        {["jpg", "jpeg", "png", "gif"].includes(ext!) ? (
+        {ext ? (
           <img className={styles.image} src={imageUrl} alt="File" />
         ) : (
           <FileTextOutlined />
