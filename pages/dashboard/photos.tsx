@@ -14,6 +14,7 @@ const PhotosPage: NextPage<Props> = ({ items }) => {
   return <FileList items={items} />;
 };
 
+//@ts-ignore
 PhotosPage.getLayout = (page: React.ReactNode) => {
   return <LayoutComponent title="dashboard">{page}</LayoutComponent>;
 };
