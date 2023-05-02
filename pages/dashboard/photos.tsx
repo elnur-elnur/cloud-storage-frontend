@@ -1,26 +1,20 @@
 import { GetServerSidePropsContext, NextPage } from "next";
-import React from "react";
-
-import { checkAuth } from "@/utils/checkAuth";
 import LayoutComponent from "@/layouts/Layout";
-
-import * as Api from "@/api";
+import React from "react";
 import { FileItem } from "@/api/dto/files.dto";
+import * as Api from "@/api";
+import { checkAuth } from "@/utils/checkAuth";
 import FileList from "@/components/fileList";
 
 interface Props {
-  items: FileItem;
+  items: FileItem[];
 }
 
-const DashboardPage: NextPage<Props> = ({ items }) => {
-  return (
-    <main>
-      <FileList items={items} />
-    </main>
-  );
+const PhotosPage: NextPage<Props> = ({ items }) => {
+  return <FileList items={items} />;
 };
 
-DashboardPage.getLayout = (page: React.ReactNode) => {
+PhotosPage.getLayout = (page: React.ReactNode) => {
   return <LayoutComponent title="dashboard">{page}</LayoutComponent>;
 };
 
@@ -32,21 +26,19 @@ export const getServerSideProps = async (ctx: GetServerSidePropsContext) => {
   }
 
   try {
-    const items = await Api.files.getAll();
+    const items = await Api.files.getAll("photos");
 
     return {
       props: {
         items,
       },
     };
-  } catch (error) {
+  } catch (err) {
     console.log(err);
     return {
-      props: {
-        items: [],
-      },
+      props: { items: [] },
     };
   }
 };
 
-export default DashboardPage;
+export default PhotosPage;
