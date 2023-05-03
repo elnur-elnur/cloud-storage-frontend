@@ -16,7 +16,7 @@ interface Props {
 const DashboardPage: NextPage<Props> = ({ items }) => {
   return (
     <main>
-      <FileActions />
+      {/* <FileActions /> */}
       <FileList items={items} />
     </main>
   );
